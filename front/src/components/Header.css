@@ -1,0 +1,24 @@
+div {
+    width: 100%;
+    background-color: white;
+}
+
+header {
+    display: flex; 
+    height: 10px;
+    justify-content: flex-end;
+    padding: 15px 10px 0px 10px;
+    width: auto;
+    /*background-color: blue;*/
+}
+
+img {
+    position: absolute;
+    width: 50px;
+}
+
+.txt {
+    color: green;
+    font-weight: bold;
+    margin-right:50px;
+}

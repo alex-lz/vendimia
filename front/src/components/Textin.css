@@ -1,0 +1,17 @@
+input[type=text], input[type=password] {
+    width: 250px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    color: blue;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 5px;
+  }
+
+  input:focus { 
+      outline: none; 
+      border: 1px solid #008CBA;
+}

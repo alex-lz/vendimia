@@ -1,0 +1,61 @@
+/* Add animation (Standard syntax) */
+  @keyframes down {
+    from {
+      top: -100px;
+      opacity: 0;
+    }
+    to {
+      top: 0px;
+      opacity: 1;
+    }
+  }
+
+  .dropbtn {
+    float: left;
+    display: block;
+    background-color: #323232;
+    color: #f2f2f2;
+    padding: 14px 16px;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: black;
+  }
+  
+  .dropdown {
+    position: relative;
+    /* display: inline-block; */
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 150px;
+    max-width: 200px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    background-color: white;
+    color: #808080;
+    padding: 12px 30px;
+    text-decoration: none;
+    text-align: left;
+    display: block;
+  }
+  
+  .dropdown a:hover { background-color: rgb( 235 ,  235 , 235 );}
+  
+  .show {
+    display: block;  
+    animation-name: down;
+    animation-duration: 0.5s;
+    margin-top: 60px;
+  }
+

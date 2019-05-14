@@ -1,0 +1,27 @@
+/* 
+Generic Styling, for Desktops/Laptops 
+*/
+.tableArt table { 
+    width: calc(100% - 10px); 
+    border-collapse: collapse; 
+    margin: 0px 5px;;
+  }
+  /* Zebra striping */
+  .tableArt tr:nth-of-type(odd) { 
+    background: #eee; 
+  }
+
+  .tableArt td, th { 
+    padding: 16px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+    border: none;
+  }
+
+  .tableArt th { 
+    background: #dad7f0; 
+    color: black; 
+    font-weight: bold; 
+    border-top: 3px solid gray;
+  }
+

@@ -1,0 +1,10 @@
+/* Control */
+.left { 
+    float: left; 
+    margin-left: 10px;
+}
+
+.right { 
+    float: right;
+    margin-right: 10px;
+ }
