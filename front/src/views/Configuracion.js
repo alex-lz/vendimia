@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Button from '../components/Button'
 import Textin from '../components/Textin'
 import '../views/RegistroVentas.css';
-//import config from './config';
+import config from '../config'
 let datos = {};
 class Configuracion extends Component {
 
@@ -14,13 +14,13 @@ class Configuracion extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8080/config_get')
+    fetch(config.apiUrl + '/config_get')
     .then(results => { 
       return results.json() 
     })
     .then(data => { 
-      console.log(data.data)
-       let configuracion = data.data.map((dato) => {
+      console.log(data.config)
+       let configuracion = data.config.map((dato) => {
            datos = { 
              tasa: dato.tasa_financiamiento, 
              enganche: dato.enganche, 
@@ -28,7 +28,6 @@ class Configuracion extends Component {
            }
        })
        this.setState({configuracion: configuracion})
-       console.log("State",this.state.configuracion)
     })
   }
 

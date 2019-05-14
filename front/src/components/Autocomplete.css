@@ -13,6 +13,10 @@
     width: 500px;
   }
 
+  .art {
+    width: 260px;
+  }
+
   .autocomplete span {
     color: gray;
     font-weight: bold;

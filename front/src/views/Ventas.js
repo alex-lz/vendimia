@@ -3,8 +3,24 @@ import Button from '../components/Button'
 import Table from '../components/Table'
 import '../components/styles.css';
 import add_icon from '../add-icon.png'
+import config from '../config'
+
+let listSells = [];
 
 class Ventas extends Component {
+  componentDidMount() {
+    fetch(config.apiUrl + '/ventas_get')
+    .then(results => { 
+      return results.json() 
+    })
+    .then(data => { 
+      console.log(data.ventas)
+       let configuracion = data.ventas.map((sell) => {
+           listSells.push([ sell.folio, sell.clave, sell.nombre, sell.total, sell.FECHA ] );
+       })
+       this.setState({configuracion: configuracion})
+    })
+}
   render() {
     return (
       <div>
@@ -17,11 +33,8 @@ class Ventas extends Component {
           <br />
           <Table
             title="Ventas Activas"
-            fields={['First Name', 'Last Name', 'Job Title']}
-            dates={[ ['James','Matman','Chief Sandwich Eater'], 
-            ['The','Tick','Crimefighter Sorta'],
-            ['Alexander','Starz','Developer'] 
-            ]} 
+            fields={['Folio Venta', 'Clave Cliente', 'Nombre', 'Total', 'Fecha']}
+            dates={listSells} 
           />
       </div>
     );

@@ -41,6 +41,10 @@ class Autocomplete extends Component {
                     let fullName = this.getElementsByTagName("input")[0].value;
                     let clave = this.getElementsByTagName("input")[1].value;
                     let rfc = this.getElementsByTagName("input")[2].value;
+
+                    localStorage.clave = clave;
+                    localStorage.nombre = fullName;
+                    localStorage.rfc = rfc;
                     
                     inp.value = clave + ' - ' + fullName;
                     span.innerHTML = 'RFC: ' + rfc;
