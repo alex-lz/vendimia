@@ -40,7 +40,7 @@ dbConn.connect(function(error){
 app.get('/config_get', function (req, res) {
     dbConn.query('SELECT * FROM configuracion', function (error, results, fields) {
         if (error) throw error;
-        return res.send({ error: false, data: results, message: 'Configuracion.' });
+        return res.send({ error: false, config: results, message: 'Configuracion.' });
     });
 });
 // Get clientes 
@@ -48,6 +48,29 @@ app.get('/clientes_get', function (req, res) {
     dbConn.query('SELECT * FROM clientes', function (error, results, fields) {
         if (error) throw error;
         return res.send({ error: false, clientes: results, message: 'Clientes.' });
+    });
+});
+// Get Articulos 
+app.get('/articulos_get', function (req, res) {
+    dbConn.query('SELECT * FROM articulos', function (error, results, fields) {
+        if (error) throw error;
+        return res.send({ articulos: results });
+    });
+});
+
+// Get ventas 
+app.get('/ventas_get', function (req, res) {
+    dbConn.query('SELECT * FROM ventas', function (error, results, fields) {
+        if (error) throw error;
+        return res.send({ ventas: results });
+    });
+});
+
+// Get max folio 
+app.get('/ventas_folio', function (req, res) {
+    dbConn.query('SELECT MAX(folio)  AS folio FROM ventas', function (error, results, fields) {
+        if (error) throw error;
+        return res.send({ folios: results });
     });
 });
 
