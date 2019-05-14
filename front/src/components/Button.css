@@ -31,6 +31,17 @@ a img {
   font-weight: bolder;
 }
 
+.circle {
+  width: 30px;
+  height: 30px;
+  padding: 0px;
+  font-size: 20px;
+  font-weight: bolder;
+  border-radius: 15px;
+  float: right;
+  position: relative;
+}
+
 /* Buttons' Colors */
 .green {
   background-color: white; 
@@ -74,6 +85,17 @@ a img {
   .iblue:hover {
     background-color: white;
     color: #008CBA
+  }
+
+  .ired {
+    background-color: rgb(148, 20, 20); 
+    color: white; 
+    border: 2px solid rgb(148, 20, 20);
+  }
+  
+  .ired:hover {
+    background-color: white;
+    color: rgb(148, 20, 20);
   }
 
   .white {

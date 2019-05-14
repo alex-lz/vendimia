@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Textin.css'
 
 class Textin extends Component {
+
   render() {
     return (
         <input 
@@ -9,6 +10,7 @@ class Textin extends Component {
           placeholder={this.props.txt} 
           name={this.props.name} 
           value={this.props.value}
+          onChange={this.props.changes}
         />
       );
   }

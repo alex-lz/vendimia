@@ -5,13 +5,22 @@ import '../views/RegistroVentas.css';
 import config from '../config'
 let datos = {};
 class Configuracion extends Component {
-
   constructor() {
     super();
-    this.state = { 
-      configuracion: [], 
+    this.state = {
+      tasa: 0,
+      enganche: 0,
+      plazo: 0
     };
   }
+  handleChange = event => {
+    if (event.target.name === "tasa")
+      this.setState({ tasa: event.target.value });
+    if (event.target.name === "enganche")
+      this.setState({ enganche: event.target.value });
+    if (event.target.name === "plazo")
+      this.setState({ plazo: event.target.value });
+  };
 
   componentDidMount() {
     fetch(config.apiUrl + '/config_get')
@@ -27,13 +36,16 @@ class Configuracion extends Component {
              plazo: dato.plazo_maximo
            }
        })
+       this.setState({tasa: datos.tasa})
+       this.setState({enganche: datos.enganche})
+       this.setState({plazo: datos.plazo})
        this.setState({configuracion: configuracion})
     })
   }
 
   render() {
     return (
-      <div>
+      <div className="sellsContainer">
         {this.state.configuracion}
         <div className="form">
           <p className="title">Configuración General</p>
@@ -42,22 +54,25 @@ class Configuracion extends Component {
             <p className="label">Tasa Financiamiento:</p>
             <Textin
               type="text" 
-               name="cliente"
-               value={datos.tasa}
+              name="tasa"
+              value={this.state.tasa}
+              changes={this.handleChange}
             />
             <br />
              <p className="label">% Enganche:</p>
             <Textin
               type="text" 
-              name="cliente"
-              value={datos.enganche}
+              name="enganche"
+              value={this.state.enganche}
+              changes={this.handleChange}
             />
             <br />
             <p className="label">Plazo Máximo:</p>
             <Textin
               type="text" 
-              name="cliente"
-              value={datos.plazo}
+              name="plazo"
+              value={this.state.plazo}
+              changes={this.handleChange}
             />
             <br />
           </div>
@@ -65,6 +80,7 @@ class Configuracion extends Component {
         <Button 
           sty="btn igreen" 
           txt="Cancelar"
+          link="/"
         />
         <Button 
           sty="btn igreen" 

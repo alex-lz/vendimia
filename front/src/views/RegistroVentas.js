@@ -6,6 +6,7 @@ import Autocomplete from '../components/Autocomplete'
 import AutocompleteArt from '../components/AutocompleteArt'
 import '../views/RegistroVentas.css';
 import config from '../config'
+import '../components/TableArt.css'
 
 let dataArts = [];
 let listArts = [];
@@ -21,7 +22,8 @@ class Ventas extends Component {
     super(props);
 
     this.state = {
-      venta: [],folio:0
+      venta: [],
+      folio:0
     };
   }
 
@@ -111,7 +113,43 @@ class Ventas extends Component {
     }
   };
 
+  delete (id) {
+    let obj = localStorage.getObj("Venta");
+    //()=>document.getElementById(idRow).remove(
+      let i = id - 1;
+      const filteredItems = obj.slice(0, i).concat(obj.slice(i+1, obj.length))
+        this.setState({ venta: filteredItems });
+        localStorage.setObj("Venta", filteredItems);
+  }
+
   render() {
+    let idRow = "";
+    let contRow = 0;
+    const tableDates = this.state.venta.map((dateRow) => {
+        let cont = 0;
+
+        contRow += 1;
+        idRow = "row"+contRow+Math.random();
+        return(
+        <tr id={idRow}>
+          {  dateRow.map((date) => {
+             cont += 1;
+             return(
+             <td>
+                {date}
+                
+                {/*cont === 3 ? <Textin type="text" value={date} />:null*/}
+                {cont === 5 ? <a className="btn circle ired" onClick={this.delete.bind(this,contRow)}>x</a>:null}
+             </td> ) 
+          }) }
+        </tr> )
+    });
+    let fields = ['Descrpción Articulo', 'Modelo', 'Cantidad', 'Precio', 'Importe'];
+    const tableFields = fields.map((field) => 
+      <th>
+        {field}
+      </th>
+    );
     return (
       <div className="form">
           <p className="title">Registro Ventas</p>
@@ -144,10 +182,22 @@ class Ventas extends Component {
           <a className="btn square igreen" onClick={this.add}>+</a>
           </div>
           <br />
-          <TableArt
+          {/* <TableArt
             fields={['Descrpción Articulo', 'Modelo', 'Cantidad', 'Precio', 'Importe']}
             dates={this.state.venta} 
-          />
+          />*/}
+          <div className="tableArt">
+            <table>
+	          <thead>
+	          <tr>
+	          	{tableFields}
+	          </tr>
+	          </thead>
+	          <tbody>
+	            {tableDates}
+	          </tbody>
+            </table>
+          </div>
       </div>
     );
   }
